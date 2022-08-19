@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand fixed-top navbar-dark bg-primary">
+  <div class="container-xl">
+    <a class="navbar-brand" href="#"><i class="bi bi-stack"></i> Navbar</a>
+
+    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+      <li><a href="/protected" class="nav-link px-2 text-white">Protected</a></li>
+    </ul>
+
+    <ul class="navbar-nav justify-content-end">
+      {% if current_user.is_authenticated %}
+        <a class="btn btn-outline-light me-2" href="{{ url_for('auth.logout') }}">Logout</a>
+      {% else %}
+        <a class="btn btn-outline-light me-2" href="{{ url_for('auth.login') }}">Login</a>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

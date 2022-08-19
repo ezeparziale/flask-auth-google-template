@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <h1>{% block title %} Index {% endblock %}</h1>
+
+    {% if current_user.is_authenticated %}
+        {{ current_user.username }}
+    {% else %}
+        <p>No Auth</p>
+    {% endif %}
+        
+{% endblock %}
