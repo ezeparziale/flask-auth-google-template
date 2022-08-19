@@ -1,13 +1,10 @@
-from datetime import datetime, timedelta, timezone
-
-from flask import current_app, redirect, url_for
-from flask_login import UserMixin, current_user
-from sqlalchemy import BOOLEAN, Column, ForeignKey, Integer, String, Table, event
+from flask import redirect, url_for
+from flask_login import UserMixin
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 
-from app import app, db, login_manager
-from app.config import settings
+from app import db, login_manager
 
 
 @login_manager.user_loader

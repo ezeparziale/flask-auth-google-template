@@ -1,9 +1,7 @@
 from authlib.integrations.flask_client import OAuth
-from flask import Flask, redirect, render_template, session, url_for
+from flask import Flask, render_template
 from flask_login import (
     LoginManager,
-    UserMixin,
-    current_user,
     fresh_login_required,
     login_required,
 )

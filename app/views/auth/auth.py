@@ -1,4 +1,4 @@
-from flask import Blueprint, flash, redirect, request, session, url_for
+from flask import Blueprint, flash, redirect, request, url_for
 from flask_login import login_user, logout_user
 
 from app import app, oauth
