@@ -2,8 +2,7 @@ from authlib.integrations.flask_client import OAuth
 from flask import Flask, render_template
 from flask_login import (
     LoginManager,
-    fresh_login_required,
-    login_required,
+    login_required
 )
 from flask_sqlalchemy import SQLAlchemy
 
@@ -40,7 +39,7 @@ def homepage():
 
 
 @app.route("/protected")
-@fresh_login_required
+@login_required
 def protected():
     return render_template("protected.html")
 
