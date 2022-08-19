@@ -1,9 +1,6 @@
 from authlib.integrations.flask_client import OAuth
 from flask import Flask, render_template
-from flask_login import (
-    LoginManager,
-    login_required
-)
+from flask_login import LoginManager, login_required
 from flask_sqlalchemy import SQLAlchemy
 
 from app.config import settings
