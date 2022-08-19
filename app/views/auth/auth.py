@@ -1,5 +1,5 @@
-from flask import Blueprint, url_for, session, redirect, flash, request
-from flask_login import logout_user, login_user
+from flask import Blueprint, flash, redirect, request, session, url_for
+from flask_login import login_user, logout_user
 
 from app import app, oauth
 from app.models import User
@@ -12,18 +12,19 @@ auth_bp = Blueprint(
     static_folder="static",
 )
 
-@auth_bp.route('/login')
+
+@auth_bp.route("/login")
 def login():
-    redirect_uri = url_for('authorize', _external=True)
+    redirect_uri = url_for("authorize", _external=True)
     return oauth.google.authorize_redirect(redirect_uri)
 
 
-@app.route('/authorize')
+@app.route("/authorize")
 def authorize():
     token = oauth.google.authorize_access_token()
     print(token)
-    userinfo = token.get('userinfo')
-    
+    userinfo = token.get("userinfo")
+
     user = User.query.filter_by(email=userinfo["email"]).first()
     if user:
         login_user(user)
@@ -32,10 +33,10 @@ def authorize():
             next = url_for("homepage")
         return redirect(next)
     flash(f"Error al loguearse", category="danger")
-    return redirect('/')
+    return redirect("/")
 
 
-@auth_bp.route('/logout')
+@auth_bp.route("/logout")
 def logout():
     logout_user()
-    return redirect('/')
+    return redirect("/")

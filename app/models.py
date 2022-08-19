@@ -9,13 +9,16 @@ from sqlalchemy.sql.sqltypes import TIMESTAMP
 from app import app, db, login_manager
 from app.config import settings
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
+
 @login_manager.unauthorized_handler
 def unauthorized():
     return redirect(url_for("auth.login"))
+
 
 class User(db.Model, UserMixin):
     __tablename__ = "users"
