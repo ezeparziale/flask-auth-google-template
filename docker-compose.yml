@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: postgres:14.4
+    hostname: postgres_db
+    container_name: postgres_db
+    restart: always
+    ports:
+      - 5432:5432
+    env_file:
+      - ./.env.db
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    networks:
+      - app_net
+
+  adminer:
+    image: adminer:4.8.1
+    hostname: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - app_net
+
+volumes:
+  postgres-db:
+
+networks:
+  app_net:
+    name: app_net
