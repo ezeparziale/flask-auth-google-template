@@ -1,4 +1,4 @@
-# Flask auth google template
+# :key: Flask auth google template
 
 Flask app with Google auth login and postgres db
 
