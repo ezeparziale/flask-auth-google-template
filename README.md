@@ -39,7 +39,7 @@ Run `docker-compose` :whale: to start the database server
 docker compose -f "docker-compose.yml" up -d --build
 ```
 
-and init the databse with alembic:
+and init the database with alembic:
 
 ```bash
 alembic upgrade head
