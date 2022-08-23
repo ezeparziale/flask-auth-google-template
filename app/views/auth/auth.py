@@ -16,7 +16,7 @@ auth_bp = Blueprint(
 @auth_bp.route("/login")
 def login():
     redirect_uri = url_for("authorize", _external=True)
-    return oauth.google.authorize_redirect(redirect_uri)
+    return oauth.google.authorize_redirect(redirect_uri, access_type="offline")
 
 
 @app.route("/authorize")

@@ -15,8 +15,6 @@ oauth.register(
     client_id=settings.GOOGLE_CLIENT_ID,
     client_secret=settings.GOOGLE_CLIENT_SECRET,
     server_metadata_url=CONF_URL,
-    access_type="offline",
-    prompt="consent",
     client_kwargs={"scope": "openid email profile"},
 )
 
