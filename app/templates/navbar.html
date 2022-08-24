@@ -11,6 +11,7 @@
       {% if current_user.is_authenticated %}
         <a class="btn btn-outline-light me-2" href="{{ url_for('auth.logout') }}">Logout</a>
       {% else %}
+        <a class="btn btn-secondary me-2" href="{{ url_for('auth.login') }}">Sign Up</a>
         <a class="btn btn-outline-light me-2" href="{{ url_for('auth.login') }}">Login</a>
       {% endif %}
     </ul>
