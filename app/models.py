@@ -22,7 +22,6 @@ class User(db.Model, UserMixin):
     id = Column(Integer, primary_key=True)
     username = Column(String(40), unique=True, nullable=False)
     email = Column(String(120), unique=True, nullable=False)
-    password = Column(String(60), nullable=False)
     created_at = Column(
         TIMESTAMP(timezone=True),
         server_default=text("CURRENT_TIMESTAMP"),
