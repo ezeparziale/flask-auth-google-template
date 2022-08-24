@@ -62,3 +62,6 @@ flask --debug run --cert=adhoc
 ## :pushpin: Features
 
 - [x] Google Auth login
+- [x] Sign up new users
+- [x] Bootstrap
+- [x] Flask
