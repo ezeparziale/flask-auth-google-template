@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %} Sign up {% endblock %}
+
+{% block content %}
+    
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <form method="post" action="">
+            {{ form.hidden_tag() }}
+            <div class="shadow p-3 mb-1 bg-white rounded">
+                <div class="card-body">
+                    <div class="text-center">
+                        <p class="fs-3 text-uppercase fw-bolder mb-5"><i class="bi bi-stack"></i> APP NAME</p>
+                    </div>
+                    <h4 class="mb-2">Welcome! 🚀</h4>
+                    <p class="mb-4 muted">Please complete your username</p>
+                    <fieldset>
+                        <div class="form-group mt-2">
+                            {{ form.email.label(class="form-control-label") }}
+                            {{ form.email(class="form-control form-control-lg") }}
+                        </div>
+                        <div class="form-group mt-2">
+                            {{ form.username.label(class="form-control-label") }}
+                            {% if form.username.errors %}
+                                {{ form.username(class="form-control form-control-lg is-invalid") }}
+                                    {% for error in form.username.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor%}
+                            {% else %}
+                                {{ form.username(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="form-group mt-3">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                    <p class="text-center mt-3">
+                        <span>Already a member?</span>
+                        <a href="{{ url_for('auth.login') }}" class="link-primary">
+                          <span>Log In</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
