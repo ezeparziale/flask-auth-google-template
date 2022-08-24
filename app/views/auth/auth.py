@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from flask_login import current_user, login_user, logout_user
+from flask_login import login_user, logout_user
 from requests_oauthlib import OAuth2Session
 
 from app import app, oauth
