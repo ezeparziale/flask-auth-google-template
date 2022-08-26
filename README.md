@@ -31,6 +31,7 @@ Create your app and obtain your `client_id` and `secret`:
 ```http
 https://developers.google.com/workspace/guides/create-credentials
 ```
+
 :construction: Before first run:
 
 Run `docker-compose` :whale: to start the database server
