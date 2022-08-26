@@ -49,7 +49,7 @@ alembic upgrade head
 
 For run the `option 2` or `option 3` you need a `cert.pem` and `key.pem`.  
 
-Create a self-signed certicate with openssl:
+Create a self-signed certificate with openssl:
 
 ```bash
 openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
