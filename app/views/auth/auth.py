@@ -1,8 +1,8 @@
-from flask import Blueprint, flash, redirect, render_template, request, url_for
+from flask import Blueprint, flash, redirect, render_template, request, session, url_for
 from flask_login import login_user, logout_user
 from requests_oauthlib import OAuth2Session
 
-from app import app, oauth
+from app import app
 from app.config import settings
 from app.models import User
 
@@ -19,14 +19,36 @@ auth_bp = Blueprint(
 
 @auth_bp.route("/login")
 def login():
-    redirect_uri = url_for("authorize", _external=True)
-    return oauth.google.authorize_redirect(redirect_uri, access_type="offline")
+    google = OAuth2Session(
+        client_id=settings.GOOGLE_CLIENT_ID,
+        scope=settings.GOOGLE_SCOPES,
+        redirect_uri=settings.GOOGLE_REDIRECT,
+    )
+    authorization_url, state = google.authorization_url(
+        settings.GOOGLE_AUTHORIZATION_BASE_URL,
+        access_type="offline",
+        prompt="select_account",
+    )
+
+    session["oauth_state"] = state
+    return redirect(authorization_url)
 
 
 @app.route("/authorize")
 def authorize():
-    token = oauth.google.authorize_access_token()
-    userinfo = token.get("userinfo")
+    google = OAuth2Session(
+        settings.GOOGLE_CLIENT_ID,
+        redirect_uri=settings.GOOGLE_REDIRECT,
+        state=session["oauth_state"],
+    )
+    token = google.fetch_token(
+        token_url=settings.GOOGLE_TOKEN_URL,
+        client_secret=settings.GOOGLE_CLIENT_SECRET,
+        authorization_response=request.url,
+    )
+
+    google = OAuth2Session(settings.GOOGLE_CLIENT_ID, token=token)
+    userinfo = google.get("https://www.googleapis.com/oauth2/v1/userinfo").json()
     user = User.query.filter_by(email=userinfo["email"]).first()
     if user:
         login_user(user)

@@ -8,6 +8,11 @@ class Settings(BaseSettings):
     GOOGLE_CLIENT_ID: str
     GOOGLE_CLIENT_SECRET: str
 
+    GOOGLE_SCOPES: list = ["openid", "email", "profile"]
+    GOOGLE_REDIRECT: str = "https://127.0.0.1:5000/authorize"
+    GOOGLE_AUTHORIZATION_BASE_URL = "https://accounts.google.com/o/oauth2/auth"
+    GOOGLE_TOKEN_URL = "https://accounts.google.com/o/oauth2/token"
+
     class Config:
         env_file = ".env"
 
