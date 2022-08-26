@@ -36,7 +36,7 @@ https://developers.google.com/workspace/guides/create-credentials
 Run `docker-compose` :whale: to start the database server
 
 ```bash
-docker compose -f "docker-compose.yml" up -d --build
+docker compose -f "docker-compose.yml" up -d --build adminer db
 ```
 
 and init the database with alembic:
@@ -45,18 +45,59 @@ and init the database with alembic:
 alembic upgrade head
 ```
 
-## :runner: Run
+:key: How to create cert and key
 
-Database:
+For run the `option 2` or `option 3` you need a `cert.pem` and `key.pem`.  
+
+Create a self-signed certicate with openssl:
 
 ```bash
-docker compose -f "docker-compose.yml" up -d --build
+openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
 ```
 
-Flask app:
+## :runner: Run
+
+### :1st_place_medal: Option 1
+
+Run the database with docker and the app with flask using a cert adhoc.
+
+- Database:
+
+```bash
+docker compose -f "docker-compose.yml" up -d --build adminer db
+```
+
+- Flask app:
 
 ```bash
 flask --debug run --cert=adhoc
+```
+
+### :2nd_place_medal: Option 2
+
+Run the database with docker and the app with flask using your certificate.
+
+- Database:
+
+```bash
+docker compose -f "docker-compose.yml" up -d --build adminer db
+```
+
+- Flask app:
+
+```bash
+flask --debug run --cert=cert.pem --key=key.pem
+```
+
+### :3rd_place_medal: Option 3
+
+Run the database and the flask app with docker. This option use a cert and key.  
+In this option Flask run over gunicorn.
+
+- Database and flask app:
+
+```bash
+docker compose -f "docker-compose.yml" up -d --build
 ```
 
 ## :pushpin: Features
