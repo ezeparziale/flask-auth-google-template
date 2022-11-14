@@ -17,7 +17,7 @@ def unauthorized():
     return redirect(url_for("auth.login"))
 
 
-class User(db.Model, UserMixin):
+class User(db.Model, UserMixin):  # type: ignore  # noqa
     __tablename__ = "users"
     id = Column(Integer, primary_key=True)
     username = Column(String(40), unique=True, nullable=False)
