@@ -29,6 +29,6 @@ def protected():
 
 
 # Blueprints
-from app.views.auth import auth
+from app.views.auth import auth  # type: ignore  # noqa
 
 app.register_blueprint(auth.auth_bp)  # type: ignore  # noqa

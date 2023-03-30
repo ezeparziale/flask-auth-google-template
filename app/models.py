@@ -2,8 +2,8 @@ from datetime import datetime
 
 from flask import redirect, url_for
 from flask_login import UserMixin
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import Integer, String
+from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 
@@ -33,7 +33,7 @@ class User(db.Model, UserMixin):  # type: ignore  # noqa
     )
 
     def __repr__(self) -> str:
-        return f"User(id={self.id}, username={self.username}, email={self.email}, created_at={self.created_at})"
+        return f"User(id={self.id}, username={self.username}, email={self.email}, created_at={self.created_at})"  # type: ignore  # noqa
 
     def save(self):
         db.session.add(self)
