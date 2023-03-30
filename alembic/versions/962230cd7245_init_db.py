@@ -1,7 +1,7 @@
 """init_db
 
 Revision ID: 962230cd7245
-Revises: 
+Revises:
 Create Date: 2022-08-18 20:14:15.605744
 
 """

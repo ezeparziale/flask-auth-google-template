@@ -19,7 +19,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from app import db
+from app import db  # type: ignore  # noqa
 
 target_metadata = db.metadata
 
@@ -61,7 +61,7 @@ def run_migrations_online() -> None:
 
     """
     connectable = engine_from_config(
-        config.get_section(config.config_ini_section),
+        config.get_section(config.config_ini_section),  # type: ignore  # noqa
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )
