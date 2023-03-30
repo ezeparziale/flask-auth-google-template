@@ -2,7 +2,7 @@ from flask import Blueprint, flash, redirect, render_template, request, session,
 from flask_login import login_user, logout_user
 from requests_oauthlib import OAuth2Session
 
-from app import app
+from app import app, db
 from app.config import settings
 from app.models import User
 
@@ -49,7 +49,11 @@ def authorize():
 
     google = OAuth2Session(settings.GOOGLE_CLIENT_ID, token=token)
     userinfo = google.get("https://www.googleapis.com/oauth2/v1/userinfo").json()
-    user = User.query.filter_by(email=userinfo["email"]).first()
+    user = (
+        db.session.execute(db.select(User).filter_by(email=userinfo["email"]))
+        .scalars()
+        .first()
+    )
     if user:
         login_user(user)
         next = request.args.get("next")
@@ -80,7 +84,11 @@ def register(access_token: str):
     form = RegistrationForm()
     form.email.data = userinfo.get("email")
     if form.validate_on_submit():
-        username_valid = User.query.filter_by(username=form.username.data).first()
+        username_valid = (
+            db.session.execute(db.select(User).filter_by(username=form.username.data))
+            .scalars()
+            .first()
+        )
         if username_valid:
             flash("A user with this username already exists", category="danger")
             return render_template("register.html", form=form)
