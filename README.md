@@ -65,7 +65,7 @@ Run the database with docker and the app with flask using a cert adhoc.
 - Database:
 
 ```bash
-docker compose -f "docker-compose.yml" up -d --build adminer db
+docker compose -f "compose.yaml" up -d --build adminer db
 ```
 
 - Flask app:
@@ -81,7 +81,7 @@ Run the database with docker and the app with flask using your certificate.
 - Database:
 
 ```bash
-docker compose -f "docker-compose.yml" up -d --build adminer db
+docker compose -f "compose.yaml" up -d --build adminer db
 ```
 
 - Flask app:
@@ -98,7 +98,7 @@ In this option Flask run over gunicorn.
 - Database and flask app:
 
 ```bash
-docker compose -f "docker-compose.yml" up -d --build
+docker compose -f "compose.yaml" up -d --build
 ```
 
 ## :pushpin: Features
