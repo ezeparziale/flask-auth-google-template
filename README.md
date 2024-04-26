@@ -107,3 +107,6 @@ docker compose -f "compose.yaml" up -d --build
 - [x] Sign up new users
 - [x] Bootstrap
 - [x] Flask
+- [x] Alembic
+- [x] Docker
+- [x] Docker compose
