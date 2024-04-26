@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     GOOGLE_AUTHORIZATION_BASE_URL: str = "https://accounts.google.com/o/oauth2/auth"
     GOOGLE_TOKEN_URL: str = "https://accounts.google.com/o/oauth2/token"
 
-    model_config = SettingsConfigDict(env_file = ".env")
+    model_config = SettingsConfigDict(env_file=".env")
 
 
 settings = Settings()  # type: ignore
