@@ -1,0 +1,31 @@
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+lint.select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "UP",  # pyupgrade
+]
+lint.ignore = [
+    "E203",  # whitespace-before-punctuation
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+lint.unfixable = [
+    "B"  # flake8-bugbear
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = [
+    "E402",  # module-import-not-at-top-of-file
+    "F401"  # Module imported but unused
+]
+
+[tool.ruff.lint.isort]
+known-third-party = ["pydantic"]
