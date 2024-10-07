@@ -6,5 +6,5 @@ psycopg2==2.9.9
 requests-oauthlib==2.0.0
 pydantic==2.9.2
 pydantic-settings==2.2.1
-alembic==1.13.2
+alembic==1.13.3
 gunicorn==22.0.0
