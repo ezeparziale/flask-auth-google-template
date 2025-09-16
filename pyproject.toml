@@ -1,3 +1,9 @@
+[project]
+name = "flask-auth-google-template"
+description = "Flask app with Google auth login and postgres db"
+readme = "README.md"
+requires-python = ">= 3.13"
+
 [tool.isort]
 profile = "black"
 
