@@ -4,20 +4,51 @@ Flask app with Google auth login and postgres db
 
 ## :floppy_disk: Installation
 
+> [!IMPORTANT]
+> Min Python version: 3.13
+
+Clone this repo:
+
+```bash
+git clone https://github.com/ezeparziale/flask-auth-google-template
+```
+
+Create virtual environment:
+
 ```bash
 python -m venv env
 ```
+
+Activate environment:
+
+- Windows:
 
 ```bash
 . env/scripts/activate
 ```
 
-```bash
-pip install --upgrade pip
-```
+- Mac/Linux:
 
 ```bash
-pip install -r requirements.txt
+. env/bin/activate
+```
+
+Upgrade pip:
+
+```bash
+python -m pip install --upgrade pip
+```
+
+Install requirements:
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+Install pre-commit:
+
+```bash
+pre-commit install
 ```
 
 ## :wrench: Config
@@ -48,7 +79,7 @@ alembic upgrade head
 
 :key: How to create cert and key
 
-For run the `option 2` or `option 3` you need a `cert.pem` and `key.pem`.  
+For run the `option 2` or `option 3` you need a `cert.pem` and `key.pem`.
 
 Create a self-signed certificate with openssl:
 
@@ -92,7 +123,7 @@ flask --debug run --cert=cert.pem --key=key.pem
 
 ### :3rd_place_medal: Option 3
 
-Run the database and the flask app with docker. This option use a cert and key.  
+Run the database and the flask app with docker. This option use a cert and key.
 In this option Flask run over gunicorn.
 
 - Database and flask app:
