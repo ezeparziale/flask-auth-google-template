@@ -3,18 +3,18 @@ default_language_version:
   python: python3.13
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
-    -   id: check-added-large-files
-    -   id: check-toml
-    -   id: check-yaml
+      - id: check-added-large-files
+      - id: check-toml
+      - id: check-yaml
         args:
-        -   --unsafe
-    -   id: end-of-file-fixer
-    -   id: trailing-whitespace
+          - --unsafe
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.12.0
+    rev: v0.13.0
     hooks:
       # Run the linter.
       - id: ruff
@@ -22,5 +22,5 @@ repos:
       # Run the formatter.
       - id: ruff-format
 ci:
-    autofix_commit_msg: 🎨 [pre-commit.ci] Auto format from pre-commit.com hooks
-    autoupdate_commit_msg: ⬆ [pre-commit.ci] pre-commit autoupdate
+  autofix_commit_msg: 🎨 [pre-commit.ci] Auto format from pre-commit.com hooks
+  autoupdate_commit_msg: ⬆ [pre-commit.ci] pre-commit autoupdate
