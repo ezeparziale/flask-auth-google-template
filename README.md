@@ -68,7 +68,7 @@ https://developers.google.com/workspace/guides/create-credentials
 Run `docker-compose` :whale: to start the database server
 
 ```bash
-docker compose -f "docker-compose.yml" up -d --build adminer db
+docker compose -f "compose.yaml" up -d --build adminer db
 ```
 
 and init the database with alembic:
